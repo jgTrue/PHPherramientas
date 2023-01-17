@@ -1,6 +1,6 @@
 <?php 
 
-class dulce{
+class Dulce{
 
     private const IVA = 0.21;
 
@@ -46,7 +46,7 @@ class dulce{
         return 'Nombre: ' . $this->getNombre()
             . '<br>Numero: ' . $this->getNumero()
             . '<br>Precio: ' . $this->getPrecio()
-            . '€<br>Precio con IVA: ' . $this->getPrecioConIVA() . '€';
+            . '€<br>Precio con IVA: ' . $this->getPrecioConIVA() . '€<br>';
     }   
      
 }
