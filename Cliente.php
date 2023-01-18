@@ -71,7 +71,12 @@ class Cliente{
         echo $str;
     }
 
-
+    public function muestraResumen()
+    {
+        return 'Nombre: ' . $this->getNombre()
+            . '<br>Numero: ' . $this->getNumero()
+            . '<br>Pedidos efectuados: ' . $this->getNumPedidosEfectuados().'€<br>';
+    }  
 
         
 
