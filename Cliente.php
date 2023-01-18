@@ -60,22 +60,27 @@ class Cliente{
        echo $this->listaDeDulces($d) ? 'Se ha realizado la valoración<br>'.$c.'<br>' : 'No se puede valorar un producto no adquirido<br>';
     }
 
-    public function listarPedidos(): void
+    public function listarPedidos() //He quitado :void a razón de reutilizar la función en muestraResumen()
     {
-        $str = 'Ha realizado: '.$this->getNumPedidosEfectuados().' pedidos: ';
+        $str = $this->getNumPedidosEfectuados().' pedidos: ';
         
         foreach ($this->dulcesComprado as $value) {
             $str .= '<br>- '.$value->getNombre();
         }
 
-        echo $str;
+        return $str;
     }
 
     public function muestraResumen()
     {
-        return '<br>Nombre: ' . $this->getNombre()
+        $str = '<br>Nombre: ' . $this->getNombre()
             . '<br>Numero: ' . $this->getNumero()
-            . '<br>Pedidos efectuados: ' . $this->getNumPedidosEfectuados().'<br>';
+            . '<br>Pedidos efectuados, ';
+        $str .= $this->listarPedidos().'<br>';
+
+        return $str;
+
+
     }  
 
         

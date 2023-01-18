@@ -81,7 +81,7 @@ Class Pasteleria{
     {
         $str = "<br>Listado de socios:<br>";
         foreach ($this->clientes as $value) {
-            $str .= $value->muestraResumen();
+            $str .= $value->muestraResumen().'<br>';
         }
         return $str;
     }
