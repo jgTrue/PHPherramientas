@@ -11,7 +11,7 @@ Class Chocolate extends Dulce{
         private $porcentajeCacao,
         private $peso
         ){
-            
+            parent::__construct($nombre,$numero,$precio);
         }
 
 

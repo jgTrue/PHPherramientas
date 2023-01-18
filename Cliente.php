@@ -57,14 +57,14 @@ class Cliente{
     }
 
     public function valorar(Dulce $d, String $c){
-       echo $this->listaDeDulces($d) ? 'Se ha realizado la valoración<br>' : 'No se puede valorar un producto no adquirido<br>';
+       echo $this->listaDeDulces($d) ? 'Se ha realizado la valoración<br>'.$c.'<br>' : 'No se puede valorar un producto no adquirido<br>';
     }
 
     public function listarPedidos(): void
     {
         $str = 'Ha realizado: '.$this->getNumPedidosEfectuados().' pedidos: ';
         
-        foreach ($this->dulcesComprado as $key => $value) {
+        foreach ($this->dulcesComprado as $value) {
             $str .= '<br>- '.$value->getNombre();
         }
 
@@ -73,9 +73,9 @@ class Cliente{
 
     public function muestraResumen()
     {
-        return 'Nombre: ' . $this->getNombre()
+        return '<br>Nombre: ' . $this->getNombre()
             . '<br>Numero: ' . $this->getNumero()
-            . '<br>Pedidos efectuados: ' . $this->getNumPedidosEfectuados().'€<br>';
+            . '<br>Pedidos efectuados: ' . $this->getNumPedidosEfectuados().'<br>';
     }  
 
         

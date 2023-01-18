@@ -72,7 +72,7 @@ Class Pasteleria{
     public function listarProductos(){
         $str = "<br>Listado de productos:<br>";
         foreach ($this->productos as $value) {
-            $str .= $value->muestraResumen() ;
+            $str .= $value->muestraResumen().'<br>';
         }
         return $str;
     }

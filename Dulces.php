@@ -1,7 +1,8 @@
 <?php 
 
-class Dulce{
+abstract class Dulce{
 
+    // La clase abstracta seguirá funcionando, la diferencia es que no podrá ser instanciada.
     private const IVA = 0.21;
 
     public function __construct(
