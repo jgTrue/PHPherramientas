@@ -1,8 +1,9 @@
 <?php 
-
-abstract class Dulce{
+include_once ('interface.php'); 
+abstract class Dulce implements Resumible{
 
     // La clase abstracta seguirá funcionando, la diferencia es que no podrá ser instanciada.
+    // ¿Hace falta que también lo implementen los hijos? No es necesario, ya que, ellos la implementan por herencia.
     private const IVA = 0.21;
 
     public function __construct(
