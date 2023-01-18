@@ -10,8 +10,8 @@ Class Tarta extends Dulce{
         $precio,
         private $rellenos = [],
         private $numPisos,
-        private $minNumComensales = 2,
-        private $maxNumComensales
+        private $maxNumComensales,
+        private $minNumComensales = 2
         ){
             parent::__construct($nombre,$numero,$precio);
         }

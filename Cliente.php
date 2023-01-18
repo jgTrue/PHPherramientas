@@ -1,19 +1,16 @@
 <?php
 include_once('Dulces.php');
 class Cliente{
+    private $numDulcesComprados;
     private $dulcesComprado = [];
     public function __construct(
         public $nombre,
         private $numero,
-        private $numDulcesComprados,
         private $numPedidosEfectuados = 0
     )
-    {
-        
+    {   
     }
 
-    
-    
     // Get the value of nombre
  
     public function getNombre()
@@ -51,7 +48,7 @@ class Cliente{
 
     public function comprar(Dulce $d):bool
     {
-        echo $this->listaDeDulces($d) ? 'Se añadió una unidad más de '.$d->getNombre() : 'Se añadió una unidad de '.$d->getNombre();
+        echo $this->listaDeDulces($d) ? 'Se añadió una unidad más de '.$d->getNombre().' <br>' : 'Se añadió una unidad de '.$d->getNombre().' <br>';
         $this->numPedidosEfectuados = $this->getNumPedidosEfectuados() + 1;
         
         array_push($this->dulcesComprado, $d);
@@ -60,15 +57,15 @@ class Cliente{
     }
 
     public function valorar(Dulce $d, String $c){
-        $this->listaDeDulces($d) ? 'Se ha realizado la valoración' : 'No se puede valorar un producto no adquirido';
+       echo $this->listaDeDulces($d) ? 'Se ha realizado la valoración<br>' : 'No se puede valorar un producto no adquirido<br>';
     }
 
     public function listarPedidos(): void
     {
-        $str = 'Ha realizado: '.$this->getNumPedidosEfectuados().' pedidos - ';
+        $str = 'Ha realizado: '.$this->getNumPedidosEfectuados().' pedidos: ';
         
         foreach ($this->dulcesComprado as $key => $value) {
-            $str .= $value;
+            $str .= '<br>- '.$value->getNombre();
         }
 
         echo $str;
