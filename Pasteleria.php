@@ -1,5 +1,7 @@
 <?php
-include_once('Dulces.php');
+include_once('Bollo.php');
+include_once('Tarta.php');
+include_once('Chocolate.php');
 include_once('Cliente.php');
 
 Class Pasteleria{
