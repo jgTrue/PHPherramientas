@@ -1,5 +1,5 @@
 <?php 
-class CupoSuperadoException extends PasteleriaException{
+class DulceNoCompradoException extends PasteleriaException{
     public function __construct(
         $message,
         $code = 0,

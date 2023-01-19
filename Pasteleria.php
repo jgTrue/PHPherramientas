@@ -87,15 +87,35 @@ Class Pasteleria{
     }
 
     public function comprarClienteProducto($numeroCliente,$numeroDulce){
+        $usuario = null;
+        $pastel = null;
+        try{
         foreach ($this->clientes as $cliente) {
             if($cliente->getNumero() == $numeroCliente){
-                foreach ($this->productos as $producto) {
-                    if($producto->getNumero() == $numeroDulce){
-                        $cliente->comprar($producto);
+                $usuario = $cliente;
+                try{
+                    foreach ($this->productos as $producto) {
+                        if($producto->getNumero() == $numeroDulce){
+                            $pastel = $producto; 
+                            $cliente->comprar($producto);
+
+                        }
                     }
+                    if ($pastel == null) {
+                            throw new DulceNoEncontradoException('<br>El producto que solicita no se encuentra disponible.');
+                    }
+                }catch(DulceNoCompradoException $cantBuy){
+                    $cantBuy->messageException();
+                }catch(DulceNoEncontradoException $doesntExist){
+                    $doesntExist->messageException();
                 }
             }
         }
+        if($usuario == null) throw new ClienteNoEncontradoException("<br>El cliente no se ha encontrado.<br>");
+        }catch(ClienteNoEncontradoException $notFound){
+            echo $notFound->messageException();
+        }
+        return $this;
     }
 
 }

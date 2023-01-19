@@ -1,7 +1,9 @@
 <?php
 include_once('Dulces.php');
+include_once('util/DulceNoCompradoException.php');
+
 class Cliente{
-    private $numDulcesComprados;
+    
     private $dulcesComprado = [];
     public function __construct(
         public $nombre,
@@ -43,21 +45,30 @@ class Cliente{
 
     public function listaDeDulces(Dulce $d): bool
     {
+        
         return (in_array($d, $this->dulcesComprado));
+        
     }
 
     public function comprar(Dulce $d):bool
     {
-        echo $this->listaDeDulces($d) ? 'Se añadió una unidad más de '.$d->getNombre().' <br>' : 'Se añadió una unidad de '.$d->getNombre().' <br>';
-        $this->numPedidosEfectuados = $this->getNumPedidosEfectuados() + 1;
+        echo $this->listaDeDulces($d) ? 'Se añadirá una unidad más de '.$d->getNombre().' <br>' : 'Se añadirá una unidad de '.$d->getNombre().' <br>';
         
         array_push($this->dulcesComprado, $d);
+        if($this->listaDeDulces($d)){
+            echo 'Se ha realizado la compra del artículo: '.$d->getNombre().' <br>';
+            $this->numPedidosEfectuados = $this->getNumPedidosEfectuados() + 1;
+            return true;
 
-        return true;
+        }else{
+            throw new DulceNoCompradoException('La compra no se ha podido realizar correctamente.');
+        }
+
     }
 
     public function valorar(Dulce $d, String $c){
        echo $this->listaDeDulces($d) ? 'Se ha realizado la valoración<br>'.$c.'<br>' : 'No se puede valorar un producto no adquirido<br>';
+       return $this;
     }
 
     public function listarPedidos() //He quitado :void a razón de reutilizar la función en muestraResumen()

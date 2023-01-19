@@ -1,5 +1,5 @@
 <?php 
-class SoporteNoEncontradoException extends PasteleriaException{
+class DulceNoEncontradoException extends PasteleriaException{
     public function __construct(
         $message,
         $code = 0,
