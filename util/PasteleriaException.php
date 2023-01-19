@@ -1,5 +1,5 @@
 <?php 
-use Exception;
+
 class PasteleriaException extends Exception{
     public function __construct(
         $message,

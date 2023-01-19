@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once('PasteleriaException.php');
 class DulceNoEncontradoException extends PasteleriaException{
     public function __construct(
         $message,

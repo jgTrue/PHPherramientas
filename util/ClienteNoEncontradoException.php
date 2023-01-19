@@ -1,5 +1,5 @@
 <?php 
-
+include_once('PasteleriaException.php');
 class ClienteNoEncontradoException extends PasteleriaException{
     public function __construct(
         $message,

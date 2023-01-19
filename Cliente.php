@@ -1,6 +1,8 @@
 <?php
 include_once('Dulces.php');
 include_once('util/DulceNoCompradoException.php');
+include_once('util/ClienteNoEncontradoException.php');
+include_once('util/DulceNoEncontradoException.php');
 
 class Cliente{
     

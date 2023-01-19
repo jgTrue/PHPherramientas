@@ -1,4 +1,5 @@
 <?php 
+include_once('PasteleriaException.php');
 class DulceNoCompradoException extends PasteleriaException{
     public function __construct(
         $message,
