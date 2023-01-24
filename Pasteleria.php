@@ -49,6 +49,7 @@ Class Pasteleria{
 
     private function incluirProducto(Dulce $producto){
         array_push($this->productos, $producto);
+        $this->log->notice('Se agregó un producto');
     }
 
     public function incluirTarta($nombre,$precio,$rellenos,$numPisos, $maxNumComensales, $minNumComensales = 2)
@@ -56,6 +57,7 @@ Class Pasteleria{
         $tarta = new Tarta($nombre, $this->getNumProductos(), $precio, $rellenos, $numPisos, $maxNumComensales, $minNumComensales);
         $this->numProductos++;
         $this->incluirProducto($tarta);
+        
     }
    
     public function incluirBollo($nombre,$precio,$relleno)
@@ -76,6 +78,7 @@ Class Pasteleria{
         $cliente = new Cliente($nombre, $this->getNumClientes(), $numPedidosEfectuados);
         $this->numClientes++;
         array_push($this->clientes, $cliente);
+        $this->log->notice('Se agregó un cliente');
     }
 
     public function listarProductos(){
@@ -107,10 +110,11 @@ Class Pasteleria{
                         if($producto->getNumero() == $numeroDulce){
                             $pastel = $producto; 
                             $cliente->comprar($producto);
-
+                            $this->log->info('Se realizo una compra');
                         }
                     }
                     if ($pastel == null) {
+                            $this->log->warning('No se encontró el dulce',[$numeroDulce]);
                             throw new DulceNoEncontradoException('<br>El producto que solicita no se encuentra disponible.');
                     }
                 }catch(DulceNoCompradoException $cantBuy){
@@ -121,7 +125,7 @@ Class Pasteleria{
             }
         }
         if($usuario == null){
-                $this->log->warning('No se encontró un cliente',[$numeroCliente]);    
+            $this->log->warning('No se encontró un cliente',[$numeroCliente]);    
             throw new ClienteNoEncontradoException("<br>El cliente no se ha encontrado.<br>");
         }
         
