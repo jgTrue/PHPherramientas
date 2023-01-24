@@ -14,7 +14,7 @@ $pasteleria->incluirTarta('Kacao', 12, ['chocolate', 'avellanas', 'crema de caca
 
 $pasteleria->comprarClienteProducto(1, 1);
 $pasteleria->comprarClienteProducto(1, 0);
-$pasteleria->comprarClienteProducto(1, 2);
+$pasteleria->comprarClienteProducto(5, 2);
 
 echo $pasteleria->listarClientes();
 echo $pasteleria->listarProductos();

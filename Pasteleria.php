@@ -1,8 +1,13 @@
 <?php
+
+use Monolog\Logger;
+use util\LogFactory;
+
 include_once('Bollo.php');
 include_once('Tarta.php');
 include_once('Chocolate.php');
 include_once('Cliente.php');
+include_once('util/LogFactory.php');
 
 Class Pasteleria{
 
@@ -11,10 +16,14 @@ Class Pasteleria{
     private $clientes = [];
     private $numClientes = 0;
 
+    private Logger $log;
+
     public function __construct(
         private $nombre,
     )
-    {}
+    {
+        $this->log = LogFactory::getLogger();
+    }
         
     // Get the value of nombre
 
@@ -111,7 +120,11 @@ Class Pasteleria{
                 }
             }
         }
-        if($usuario == null) throw new ClienteNoEncontradoException("<br>El cliente no se ha encontrado.<br>");
+        if($usuario == null){
+                $this->log->warning('No se encontró un cliente',[$numeroCliente]);    
+            throw new ClienteNoEncontradoException("<br>El cliente no se ha encontrado.<br>");
+        }
+        
         }catch(ClienteNoEncontradoException $notFound){
             echo $notFound->messageException();
         }

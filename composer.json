@@ -1,0 +1,19 @@
+{
+    "name": "dwes/log",
+    "description": "Pruebas con Monolog",
+    "license": "CC\u001b[Dreative commons",
+    "autoload": {
+        "psr-4": {
+            "Dwes\\Log\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jgTrue",
+            "email": "jgTrue@protonmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.2"
+    }
+}
